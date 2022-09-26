@@ -26,7 +26,7 @@ const data = [{
     "id": 5,
     "name": 'Barbiecore',
     "image": "images/barbiecore_gif.gif",
-    "desc": "'I'm a barbie girl, in a barbie woOoOrrld !' . . . Need I say more ?",
+    "desc": "It's a human barbie. Pink, girly, sweet and high pitch. 'I'm a barbie girl, in a barbie woOoOrrld !' . . . Need I say more ?",
     "price": 5.99
   }, {
     "id": 6,
