@@ -30,7 +30,7 @@ const data = [{
     "price": 5.99
   }, {
     "id": 6,
-    "name": 'Cottage Core',
+    "name": 'Cottagecore',
     "image": "images/cottage_core_gif.gif",
     "desc": "Floral patters and pastel colors, love for gardening and everything nature. Your typical country side person. Ownership of a cottage ideal but not mandatory",
     "price": 35.99
@@ -48,7 +48,7 @@ const data = [{
     "price": 3.99
   }, {
     "id": 9,
-    "name": 'Fairy Core',
+    "name": 'Fairycore',
     "image": "images/fairycore_gif.gif",
     "desc": "Inspired by fairies and elves mythology. Pastel colors, shimmery fabrics. Think Galadriel in The Ring Of Power by J.R.R Tolkien",
     "price": 35.99
