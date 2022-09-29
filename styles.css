@@ -6,7 +6,26 @@ body {
     margin: 0;
   }
 
+h4{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 35px;
+    color: bisque;
+    align-self: center;
+    font-weight: lighter;
+}
+
+h4 strong {
+    font-weight: bolder;
+    color:rgb(255, 255, 255)
+}
+
+
 .page-header {
+    background-image: url(./images/tiktokgif.gif);
+    background-size: 10% ;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 150px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -80,4 +99,10 @@ h2 {
     font-weight: bolder;
     color:rgb(255, 41, 77);
     align-self: center;
+ }
+
+ head p {
+    color: blue;
+    padding: 10px;
+    margin: 10px
  }

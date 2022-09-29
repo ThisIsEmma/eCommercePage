@@ -95,5 +95,24 @@ function getTotal() {
     return totalPrice.toFixed(2);
 }
 
+function removeItem(name, qty = 0) {
+    for(let i = 0; i<cart.length; i++){
+        if(cart[i].name === name){
+            if(qty > 0){
+                cart[i].quantity -= 1;
+                console.log(`1 ${name} has been removed.`)
+            }
+            if(cart[i].quantity < 1 || qty === 0){
+                cart.splice(i,1)
+            }
+            return
+        }
+    }
+
+}
+
 showItem();
+removeItem('shoe');
+showItem();
+
 
