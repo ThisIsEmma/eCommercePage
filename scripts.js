@@ -49,6 +49,14 @@ for (let i = 0; i < data.length; i += 1) {
     
 };
 
+const all_items_button = Array.from(document.querySelectorAll("button"));
+
+all_items_button.forEach(elt => elt.addEventListener('click', () => {
+    addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
+    showItem()
+  }))
+
+
 let cart = [];
 
 function addItem(name, price) {
@@ -70,10 +78,11 @@ function addItem(name, price) {
     
 }
 
+/*
 addItem('shoe', 0.99);
 addItem('guitar', 100.99);
 addItem('pastry', 3.99);
-addItem('shoe', 0.99)
+addItem('shoe', 0.99)*/
 
 function showItem() {
 
@@ -96,7 +105,6 @@ function showItem() {
 
    }
    itemList.innerHTML = itemStr;
-
    const totalPrice = getTotal();
    cartTotal.innerHTML = `Cart total: ${totalPrice}`
 
