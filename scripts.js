@@ -5,8 +5,8 @@ const itemList = document.getElementById('item-list');
 const cartTotal = document.getElementById('cart-total')
 const cartquantity = document.getElementById('cart-qty')
 itemList.innerHTML = '<li>Your cart is empty</li>'
-cartTotal.innerHTML = '<h5> Hello World</h5>'
-cartquantity.innerHTML = '<h5> Hello World</h5>'
+cartTotal.innerHTML = '<h5></h5>'
+cartquantity.innerHTML = '<h5></h5>'
 
 
 for (let i = 0; i < data.length; i += 1) {
@@ -59,30 +59,47 @@ all_items_button.forEach(elt => elt.addEventListener('click', () => {
 
 let cart = [];
 
+//Handle Change evts to update input
+itemList.onchange = function(evt) {
+    if(evt.target && evt.target.classList.contains('update-quantity')) {
+        const name = evt.target.dataset.name;
+        const qty = parseInt(evt.target.value);
+        updateCart(name,qty);
+    }
+}
+
+
+//Handle cart events
+itemList.onclick = function(evt) {
+    if (evt.target && evt.target.classList.contains('remove')){
+        const name = evt.target.dataset.name;
+        removeItem(name);
+    } else if (evt.target && evt.target.classList.contains('add-one')) {
+        const name = evt.target.dataset.name;
+        addItem(name);
+    } else if (evt.target && evt.target.classList.contains('remove-one')) {
+        const name = evt.target.dataset.name;
+        removeItem(name, 1);
+    }
+}
+
+//Functions
 function addItem(name, price) {
-
     for (let i = 0; i < cart.length; i += 1) {
-
         if(cart[i].name === name) {
             cart[i].quantity += 1;
+            showItem()
             return
         }
     }
-
     const item = {
         name,
         price,
         quantity: 1
     };
-    cart.push(item);
-    
+    cart.push(item); 
+    console.log(`One ${item.name} has been added`)
 }
-
-/*
-addItem('shoe', 0.99);
-addItem('guitar', 100.99);
-addItem('pastry', 3.99);
-addItem('shoe', 0.99)*/
 
 function showItem() {
 
@@ -92,15 +109,14 @@ function showItem() {
    let itemStr = '';
    for (let i = 0; i < cart.length; i++) {
         const {name, price, quantity} = cart[i];
-        /*itemStr += `<li>
-            ${cart[i].name} 
-            $${cart[i].price} x ${cart[i].quantity} = 
-            $${(cart[i].price*cart[i].quantity)}
-            </li>`;*/
         itemStr += `<li>
             ${name} 
-            $${price} x ${cart[i].quantity} = 
+            $${price} x ${quantity} = 
             $${(price*quantity)}
+            <button class= "remove" data-name="${name}">remove item</button>
+            <button class= "add-one" data-name="${name}">+</button>
+            <button class= "remove-one" data-name="${name}">-</button>
+            <input class= "update-quantity" type="number" data-name="${name}">
             </li>`;
 
    }
@@ -132,14 +148,23 @@ function removeItem(name, qty = 0) {
             if(cart[i].quantity < 1 || qty === 0){
                 cart.splice(i,1)
             }
+            showItem();
             return
         }
     }
-
 }
 
-showItem();
-removeItem('shoe');
-showItem();
-
+function updateCart(name,qty) {
+    for(let i = 0; i<cart.length; i++){
+        if(cart[i].name === name){
+            if(qty < 1){
+                removeItem(name);
+                return
+            }
+            cart[i].quantity = qty;
+            showItem()
+            return
+        }
+    }
+}
 
